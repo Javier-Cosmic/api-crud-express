@@ -8,7 +8,7 @@ exports.createUser = async (req, res) => {
         
         let user = await User.findOne({ rut });
         if(user){
-            return res.status(400).json({ status: 'Error', msg: 'El usuario ya está registrado.'})
+            return res.status(400).json({ status: 'Error', msg: 'El usuario ya está registrado'})
         }
         
         const users = new User(req.body);
@@ -21,7 +21,7 @@ exports.createUser = async (req, res) => {
         
         await users.save();
         
-        res.json({ status: 'Ok', msg: 'Usuario creado exitosamente.', users})
+        res.json({ status: 'Ok', msg: 'Usuario creado exitosamente', users})
         
     } catch (error) {
         res.status(500).json({ status: 'Error', msg: error.message})
@@ -67,12 +67,12 @@ exports.deleteUser = async (req, res) => {
 
         let user = await User.findById(req.params.id);
         if(!user){
-            res.status(404).json({ status: 'Error', msg: 'El usuario no existe.'})
+            res.status(404).json({ status: 'Error', msg: 'El usuario no existe'})
         }
 
         await User.findByIdAndRemove({ _id: req.params.id });
 
-        res.json({ status: 'Ok', msg: 'Usuario eliminado correctamente.' })
+        res.json({ status: 'Ok', msg: 'Usuario eliminado correctamente' })
         
     } catch (error) {
         
